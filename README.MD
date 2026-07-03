@@ -16,7 +16,7 @@ and a VS Code-themed web playground with live token and AST visualization.
 
 ## 🚀 Live Demo
 
-[Add Vercel URL after deployment]
+[https://interpreter-ui.vercel.app/]
 
 ---
 
