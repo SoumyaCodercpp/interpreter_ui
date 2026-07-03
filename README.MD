@@ -235,6 +235,26 @@ flowchart LR
     E --> F[Output]
 ```
 
+### Project Structure
+
+```
+src/
+├── fe/                        # Compiler Frontend
+│   ├── ast.ts                 # AST node type definitions
+│   ├── tokenizer.ts           # Lexer - text to tokens
+│   └── parser.ts              # Recursive descent parser
+├── be/                        # Runtime Backend
+│   ├── runner.ts              # Tree-walking interpreter
+│   ├── memory.ts              # Heap + LexicalEnvironment + CallStack
+│   ├── builtin.ts             # print() implementation
+│   └── utils.ts               # UUID generator
+└── components/                # React UI
+    ├── Editor.tsx             # Code editor with line numbers
+    ├── OutputPanel.tsx        # Output with line numbers
+    ├── TokenView.tsx          # Colored token table
+    └── ASTView.tsx            # Collapsible AST tree viewer
+```
+
 ### Scoping Chain (LEGB)
 
 ```mermaid
@@ -259,33 +279,6 @@ flowchart TD
     Heap --> Val2[String hello]
     Heap --> Val3[Array 1 2 3]
 ```
-
-### Project Structure
-
-```mermaid
-flowchart TD
-    subgraph fe [Compiler Frontend]
-        Tokenizer[tokenizer.ts Lexer]
-        Parser[parser.ts Parser]
-        AST[ast.ts Node Types]
-    end
-    subgraph be [Runtime Backend]
-        Runner[runner.ts Interpreter]
-        Memory[memory.ts Heap Env Stack]
-        Builtin[builtin.ts print]
-        Utils[utils.ts UUID]
-    end
-    subgraph ui [React UI]
-        Editor[Editor.tsx]
-        Output[OutputPanel.tsx]
-        TokenView[TokenView.tsx]
-        ASTView[ASTView.tsx]
-    end
-    Tokenizer --> Parser --> AST --> Runner
-    Runner --> Memory
-    Runner --> Builtin
-```
-
 
 ## 📝 Example Programs
 
