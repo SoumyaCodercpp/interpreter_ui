@@ -251,6 +251,51 @@ flowchart LR
 | `components/` | `TokenView.tsx` | Colored token table |
 | `components/` | `ASTView.tsx` | Collapsible AST tree viewer |
 
+### Execution Flow
+
+```mermaid
+flowchart TD
+    A[User clicks Run] --> B[Tokenizer splits text into tokens]
+    B --> C[Parser builds AST from tokens]
+    C --> D[Runner evaluates AST recursively]
+    D --> E{Node type?}
+    E -->|Literal| F[Store value in Heap]
+    E -->|Identifier| G[Look up variable in Environment]
+    E -->|BinaryExpression| H[Evaluate left, evaluate right, compute]
+    E -->|Call| I[Push new frame on CallStack]
+    E -->|If/While| J[Evaluate condition, branch]
+    F --> K[Return result]
+    G --> K
+    H --> K
+    I --> K
+    J --> K
+    K --> L{More to execute?}
+    L -->|Yes| D
+    L -->|No| M[Return output to UI]
+```
+
+### Function Execution Flow
+
+```mermaid
+flowchart TD
+    A[fn add a b ...] --> B[Tokenizer: fn, identifier, params...]
+    B --> C[Parser: FunctionDeclaration node]
+    C --> D[Runner: Store function in Heap]
+    D --> E[Heap: type function, node, parentEnv]
+    E --> F[Set variable add in Environment]
+    F --> G[add 3 4 called]
+    G --> H[Runner: Call node]
+    H --> I[Look up add in Environment]
+    I --> J[Get function from Heap]
+    J --> K[Create new LexicalEnvironment]
+    K --> L[Set params a=3 b=4 in new env]
+    L --> M[Push frame on CallStack]
+    M --> N[Execute function body]
+    N --> O[return a + b]
+    O --> P[Pop frame from CallStack]
+    P --> Q[Return result 7]
+```
+
 ### Scoping Chain (LEGB)
 
 ```mermaid
