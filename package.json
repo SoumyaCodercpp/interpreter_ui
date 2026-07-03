@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "build": "vite build",
     "start": "node dist/main.js",
     "dev": "tsc && node dist/main.js",
     "ui": "vite",
