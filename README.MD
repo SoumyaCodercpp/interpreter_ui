@@ -83,6 +83,7 @@ empty = null;
 
 ```minilang
 greeting = "Hello " + "World";
+print(greeting);
 ```
 
 #### Comparison
@@ -252,38 +253,40 @@ flowchart TD
     Runner --> Stack[CallStack]
     
     Env --> Parent[Parent Environment]
-    Env --> Vars[Variable → Pointer Map]
+    Env --> Vars[Variable to Pointer Map]
     
     Stack --> Frame1[Frame: global]
     Stack --> Frame2[Frame: function]
     
     Heap --> Val1[Number: 42]
-    Heap --> Val2[String: "hello"]
-    Heap --> Val3[Array: [1,2,3]]
+    Heap --> Val2[String: hello]
+    Heap --> Val3[Array: 1 2 3]
 ```
+
+### Project Structure
 
 ### Project Structure
 
 ```mermaid
 flowchart TD
     subgraph fe [Frontend - Compiler]
-        Tokenizer[tokenizer.ts<br/>Lexer]
-        Parser[parser.ts<br/>Recursive Descent]
-        AST[ast.ts<br/>Node Types]
+        Tokenizer[tokenizer.ts - Lexer]
+        Parser[parser.ts - Parser]
+        AST[ast.ts - Node Types]
     end
     
     subgraph be [Backend - Runtime]
-        Runner[runner.ts<br/>Interpreter]
-        Memory[memory.ts<br/>Heap + Env + CallStack]
-        Builtin[builtin.ts<br/>print()]
-        Utils[utils.ts<br/>UUID]
+        Runner[runner.ts - Interpreter]
+        Memory[memory.ts - Heap Env CallStack]
+        Builtin[builtin.ts - print function]
+        Utils[utils.ts - UUID]
     end
     
     subgraph ui [React UI]
-        Editor[Editor.tsx<br/>Line numbers]
+        Editor[Editor.tsx - Line numbers]
         Output[OutputPanel.tsx]
-        TokenView[TokenView.tsx<br/>Colored table]
-        ASTView[ASTView.tsx<br/>Collapsible tree]
+        TokenView[TokenView.tsx - Colored table]
+        ASTView[ASTView.tsx - Collapsible tree]
     end
     
     Tokenizer --> Parser --> AST --> Runner
