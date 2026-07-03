@@ -237,23 +237,19 @@ flowchart LR
 
 ### Project Structure
 
-```
-src/
-├── fe/                        # Compiler Frontend
-│   ├── ast.ts                 # AST node type definitions
-│   ├── tokenizer.ts           # Lexer - text to tokens
-│   └── parser.ts              # Recursive descent parser
-├── be/                        # Runtime Backend
-│   ├── runner.ts              # Tree-walking interpreter
-│   ├── memory.ts              # Heap + LexicalEnvironment + CallStack
-│   ├── builtin.ts             # print() implementation
-│   └── utils.ts               # UUID generator
-└── components/                # React UI
-    ├── Editor.tsx             # Code editor with line numbers
-    ├── OutputPanel.tsx        # Output with line numbers
-    ├── TokenView.tsx          # Colored token table
-    └── ASTView.tsx            # Collapsible AST tree viewer
-```
+| Directory | File | Description |
+|-----------|------|-------------|
+| `fe/` | `ast.ts` | AST node type definitions (20+ types) |
+| `fe/` | `tokenizer.ts` | Hand-written lexer (text → tokens) |
+| `fe/` | `parser.ts` | Recursive descent parser (15 precedence levels) |
+| `be/` | `runner.ts` | Tree-walking interpreter |
+| `be/` | `memory.ts` | Heap, LexicalEnvironment, CallStack |
+| `be/` | `builtin.ts` | Built-in functions (print) |
+| `be/` | `utils.ts` | UUID generator |
+| `components/` | `Editor.tsx` | Code editor with line numbers |
+| `components/` | `OutputPanel.tsx` | Output panel with line numbers |
+| `components/` | `TokenView.tsx` | Colored token table |
+| `components/` | `ASTView.tsx` | Collapsible AST tree viewer |
 
 ### Scoping Chain (LEGB)
 
