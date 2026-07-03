@@ -278,34 +278,19 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    subgraph Compilation
-        A[Source Code] --> B[Tokenizer]
-        B --> C[Parser]
-        C --> D[FunctionDeclaration AST]
-    end
-    
-    subgraph Storage
-        D --> E[Heap stores function]
-        E --> F[Environment maps name to pointer]
-    end
-    
-    subgraph Call
-        G[Function called with args] --> H[Look up in Environment]
-        H --> I[Get function from Heap]
-        I --> J[Create new Environment]
-        J --> K[Set parameters in new env]
-        K --> L[Push frame on CallStack]
-    end
-    
-    subgraph Execution
-        L --> M[Execute function body]
-        M --> N[Evaluate return expression]
-        N --> O[Pop frame from CallStack]
-        O --> P[Return value to caller]
-    end
-    
-    Compilation --> Storage
-    Storage --> Call
+    A[Source: fn add a b return a + b] --> B[Tokenizer splits into tokens]
+    B --> C[Parser builds FunctionDeclaration node]
+    C --> D[Runner stores function in Heap]
+    D --> E[Environment maps add to function pointer]
+    E --> F[add 3 4 called]
+    F --> G[Look up add in Environment]
+    G --> H[Get function from Heap]
+    H --> I[Create new LexicalEnvironment]
+    I --> J[Set a=3 b=4 in new env]
+    J --> K[Push frame on CallStack]
+    K --> L[Execute return a + b]
+    L --> M[Pop frame from CallStack]
+    M --> N[Return 7 to caller]
 ```
 
 ### Scoping Chain (LEGB)
