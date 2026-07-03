@@ -1,6 +1,6 @@
-import { Tokenizer, TokenManager } from "./fe/tokenizer.js";
-import { Parser } from "./fe/parser.js";
-import { Runner } from "./be/runner.js";
+import { Tokenizer, TokenManager } from "./fe/tokenizer";
+import { Parser } from "./fe/parser";
+import { Runner } from "./be/runner";
 
 // Test program
 const code = `

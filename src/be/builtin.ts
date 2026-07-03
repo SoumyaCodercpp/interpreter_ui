@@ -1,4 +1,4 @@
-import { type ArrayValue, Heap, type ObjectValue, type PrimitiveValue, type RuntimeValue } from "./memory.js";
+import { type ArrayValue, Heap, type ObjectValue, type PrimitiveValue, type RuntimeValue } from "./memory";
 
 
 //When your program calls print("hello"), this file converts the runtime value { type: 'string', value: 'hello' } into the text "hello" that appears on screen

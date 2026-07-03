@@ -1,5 +1,5 @@
-import type { ASTNode, FunctionDeclaration } from "../fe/ast.ts";
-import { uuid } from "./utils.js";
+import type { ASTNode, FunctionDeclaration } from "../fe/ast";
+import { uuid } from "./utils";
 
 export type Pointer = string
 

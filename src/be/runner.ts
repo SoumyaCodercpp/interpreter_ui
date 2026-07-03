@@ -21,10 +21,10 @@ import type {
   ObjectLiteral,
   PropAccess,
   ElementAccess
-} from "../fe/ast.js";
-import { Heap, LexicalEnvironment, CallStack, type Pointer, type RuntimeValue, isTruthy, isPrimitive } from "./memory.js";
-import { printAny } from "./builtin.js";
-import { uuid } from "./utils.js";
+} from "../fe/ast";
+import { Heap, LexicalEnvironment, CallStack, type Pointer, type RuntimeValue, isTruthy, isPrimitive } from "./memory";
+import { printAny } from "./builtin";
+import { uuid } from "./utils";
 
 export class Runner {
   heap: Heap;
