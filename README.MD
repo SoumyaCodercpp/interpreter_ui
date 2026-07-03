@@ -7,7 +7,7 @@ and a VS Code-themed web playground with live token and AST visualization.
 ## 🎓 Technical Highlights
 
 - **Compiler Design** — Hand-written Lexer, Recursive Descent Parser, AST construction
-- **Recursive Descent Parsing** — 15-level operator precedence with left-associativity
+- **Recursive Descent Parsing** — Operator precedence with left-associativity
 - **Tree-Walking Interpretation** — Recursive AST evaluation without intermediate bytecode
 - **Lexical Scoping** — LEGB (Local → Enclosing → Global → Built-in) with closure support
 - **Memory Management** — Custom heap with pointer-based reference semantics
