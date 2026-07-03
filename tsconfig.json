@@ -12,8 +12,7 @@
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": false,
     "isolatedModules": true,
-    "sourceMap": true,
-    "declaration": true
+    "noEmit": true
   },
   "include": ["src"]
 }
