@@ -49,7 +49,6 @@ npm run preview
 ## 📐 Grammar (Production Rules)
 
 ```
-## 📐 Grammar (Production Rules)
 
 
 program        → statement*
