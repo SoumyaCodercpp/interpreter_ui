@@ -46,6 +46,65 @@ npm run build
 npm run preview
 ```
 
+## 📐 Grammar (Production Rules)
+
+```
+program        → statement*
+
+statement      → assignmentOrExpr
+               | ifStatement
+               | whileLoop
+               | functionDeclaration
+               | returnStatement
+
+assignmentOrExpr → expression ("=" expression)? ";"
+
+ifStatement    → "if" "(" expression ")" block
+                 ("else" "if" "(" expression ")" block)*
+                 ("else" block)?
+
+whileLoop      → "while" "(" expression ")" block
+
+functionDecl   → "fn" identifier "(" params? ")" block
+
+returnStmt     → "return" expression? ";"
+
+block          → "{" statement* "}"
+
+params         → identifier ("," identifier)*
+
+expression     → orExpression
+
+orExpression   → andExpression ("||" andExpression)*
+
+andExpression  → equalityExpression ("&&" equalityExpression)*
+
+equalityExpr   → relationalExpr (("==" | "!=") relationalExpr)*
+
+relationalExpr → additiveExpr (("<" | ">" | "<=" | ">=") additiveExpr)*
+
+additiveExpr   → multiplicativeExpr (("+" | "-") multiplicativeExpr)*
+
+multiplicative → unaryExpr (("*" | "/" | "%") unaryExpr)*
+
+unaryExpr      → ("!" | "-" | "+") unaryExpr
+               | accessOrCall
+
+accessOrCall   → atom (("." identifier) | ("[" expression "]") | ("(" args? ")"))*
+
+atom           → number
+               | string
+               | "true" | "false" | "null"
+               | identifier
+               | "(" expression ")"
+               | "[" (expression ("," expression)*)? "]"
+               | "{" (kvPair ("," kvPair)*)? "}"
+
+kvPair         → (identifier | "[" expression "]") ":" expression
+
+args           → expression ("," expression)*
+```
+
 ## 📝 Language Reference
 
 ### Variables & Assignment
