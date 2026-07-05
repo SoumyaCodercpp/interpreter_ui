@@ -51,7 +51,7 @@ npm run preview
 ```
 ## 📐 Grammar (Production Rules)
 
-```
+
 program        → statement*
 
 statement      → expression = expression ;
