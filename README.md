@@ -49,60 +49,51 @@ npm run preview
 ## 📐 Grammar (Production Rules)
 
 ```
+## 📐 Grammar (Production Rules)
+
+```
 program        → statement*
 
-statement      → assignmentOrExpr
-               | ifStatement
-               | whileLoop
-               | functionDeclaration
-               | returnStatement
+statement      → expression = expression ;
+               | expression ;
+               | if ( expression ) block ( else block )?
+               | while ( expression ) block
+               | fn identifier ( params? ) block
+               | return expression? ;
 
-assignmentOrExpr → expression ("=" expression)? ";"
+block          → { statement* }
 
-ifStatement    → "if" "(" expression ")" block
-                 ("else" "if" "(" expression ")" block)*
-                 ("else" block)?
+params         → identifier ( , identifier )*
 
-whileLoop      → "while" "(" expression ")" block
+expression     → orExpr
 
-functionDecl   → "fn" identifier "(" params? ")" block
+orExpr         → andExpr ( || andExpr )*
 
-returnStmt     → "return" expression? ";"
+andExpr        → equalityExpr ( && equalityExpr )*
 
-block          → "{" statement* "}"
+equalityExpr   → relationalExpr ( == | != relationalExpr )*
 
-params         → identifier ("," identifier)*
+relationalExpr → additiveExpr ( < | > | <= | >= additiveExpr )*
 
-expression     → orExpression
+additiveExpr   → multiplicativeExpr ( + | - multiplicativeExpr )*
 
-orExpression   → andExpression ("||" andExpression)*
+multiplicative → unaryExpr ( * | / | % unaryExpr )*
 
-andExpression  → equalityExpression ("&&" equalityExpression)*
+unaryExpr      → ( ! | - | + ) unaryExpr | accessOrCall
 
-equalityExpr   → relationalExpr (("==" | "!=") relationalExpr)*
+accessOrCall   → atom ( . identifier | [ expression ] | ( args? ) )*
 
-relationalExpr → additiveExpr (("<" | ">" | "<=" | ">=") additiveExpr)*
+atom           → number | string | true | false | null | identifier
+               | ( expression ) | [ elements? ] | { pairs? }
 
-additiveExpr   → multiplicativeExpr (("+" | "-") multiplicativeExpr)*
+elements       → expression ( , expression )*
 
-multiplicative → unaryExpr (("*" | "/" | "%") unaryExpr)*
+pairs          → pair ( , pair )*
 
-unaryExpr      → ("!" | "-" | "+") unaryExpr
-               | accessOrCall
+pair           → ( identifier | [ expression ] ) : expression
 
-accessOrCall   → atom (("." identifier) | ("[" expression "]") | ("(" args? ")"))*
+args           → expression ( , expression )*
 
-atom           → number
-               | string
-               | "true" | "false" | "null"
-               | identifier
-               | "(" expression ")"
-               | "[" (expression ("," expression)*)? "]"
-               | "{" (kvPair ("," kvPair)*)? "}"
-
-kvPair         → (identifier | "[" expression "]") ":" expression
-
-args           → expression ("," expression)*
 ```
 
 ## 📝 Language Reference
