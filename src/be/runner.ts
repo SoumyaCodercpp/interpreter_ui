@@ -82,8 +82,7 @@ export class Runner {
   // ─── STATEMENTS ────────────────────────────────────
 
   private executeStatement(stmt: Statement): void {
-    // Update current node for stack display
-    this.callStack.peek().curr = stmt;
+    
 
     switch (stmt.type) {
       case "AssignmentStatement":
